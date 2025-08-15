@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshu Yadav - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Define CSS variables for theming */
+        :root {
+            --bg-color: #f3f4f6; /* light gray */
+            --text-color: #111827; /* dark gray */
+            --accent-color: #ef4444; /* red */
+            --border-color: #e5e7eb; /* light gray */
+            --secondary-text-color: #6b7280; /* medium gray */
+            --card-bg-color: #ffffff;
+        }
+
+        html.dark {
+            --bg-color: #101010; /* New deep charcoal color */
+            --text-color: #f3f4f6; /* light gray */
+            --accent-color: #ef4444; /* red */
+            --border-color: #2a2a2a; /* Darker border */
+            --secondary-text-color: #9ca3af; /* light gray */
+            --card-bg-color: #181818; /* Slightly lighter card bg */
+        }
+
+        /* Apply variables */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Helper classes for applying theme colors */
+        .bg-primary { background-color: var(--bg-color); }
+        .text-primary { color: var(--text-color); }
+        .text-secondary { color: var(--secondary-text-color); }
+        .text-accent { color: var(--accent-color); }
+        .border-primary { border-color: var(--border-color); }
+        .bg-card { background-color: var(--card-bg-color); }
+
+        .hover-accent:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Mobile menu transition */
+        #mobile-menu {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+    </style>
+    <script>
+        // Apply theme on initial load to prevent flash of wrong theme
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-primary/80 backdrop-blur-sm border-b border-primary">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-black text-accent tracking-tighter">HY.</a>
+            <div class="flex items-center space-x-6">
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="font-medium hover-accent transition-colors">About</a>
+                    <a href="#work" class="font-medium hover-accent transition-colors">Work</a>
+                    <a href="#contact" class="font-medium hover-accent transition-colors">Contact</a>
+                                        <a href="https://drive.google.com/file/d/1CI6ycEx1e3vvsdrwWwHcM9enFUXTa6tJ/view?usp=sharing" class="font-medium hover-accent transition-colors">Resume</a>
+
+                </nav>
+                <button id="theme-toggle" class="text-primary focus:outline-none">
+                    <!-- Sun Icon -->
+                    <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <!-- Moon Icon -->
+                    <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <!-- Hamburger Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-primary z-50">
+                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-primary z-40 flex flex-col items-center justify-center space-y-8 text-2xl font-bold opacity-0 -translate-y-4 pointer-events-none">
+        <a href="#about" class="mobile-menu-link hover-accent">About</a>
+        <a href="#work" class="mobile-menu-link hover-accent">Work</a>
+        <a href="#contact" class="mobile-menu-link hover-accent">Contact</a>
+    </div>
+
+
+    <main class="container mx-auto px-6 pt-24">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[80vh] flex flex-col justify-center border-b border-primary">
+            <div class="max-w-4xl">
+                <h1 class="text-5xl md:text-8xl font-black tracking-tighter leading-none mb-6">
+                    ARCHITECT <br>OF THE DIGITAL <span class="text-accent">BACKBONE</span>
+                </h1>
+                <p class="text-lg md:text-xl text-secondary max-w-2xl">
+                    I design and build secure, scalable server-side logic—powering modern web apps with clean code, efficient APIs, and robust databases.
+                </p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 border-b border-primary">
+            <div class="grid md:grid-cols-5 gap-10">
+                <div class="md:col-span-2">
+                    <h2 class="text-3xl font-bold tracking-tighter mb-4"><a href="https://github.com/Himanshu-Yadav-0">A BIT ABOUT ME</a></h2>
+                </div>
+                <div class="md:col-span-3 text-lg text-secondary space-y-4">
+                    <p>
+                        I’m the guy your frontend calls when it needs to stop looking pretty and start actually working.
+I build the invisible machinery that keeps modern web apps alive—databases that don’t panic under load, APIs that respond before you blink, and server logic that refuses to break even on Mondays.
+                    </p>
+                    <p>
+                        I believe the backend should be like a good referee—unseen, but absolutely running the show. If you notice my work, it’s probably because something amazing just happened… not because something broke.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Section -->
+        <section id="work" class="py-20  border-primary">
+            <h2 class="text-3xl font-bold tracking-tighter mb-12">ON DISPLAY</h2>
+            <div class="space-y-4">
+                <!-- Project 1 -->
+                <a href="https://expensight.thepenguinguy.info/" class="block group">
+                    <div class="flex justify-between items-center py-6 border-t border-primary transition-all duration-300 group-hover:border-accent">
+                        <h3 class="text-2xl md:text-4xl font-bold tracking-tighter transition-colors group-hover:text-accent">ExpenSight</h3>
+                        <p class="text-secondary hidden md:block">Where receipts meet ruthles accuracy.</p>
+                        <svg class="w-8 h-8 transform transition-transform duration-300 group-hover:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+                </a>
+                <!-- Project 2 -->
+                <a href="https://github.com/Himanshu-Yadav-0/TaskSync" class="block group">
+                    <div class="flex justify-between items-center py-6 border-t border-primary transition-all duration-300 group-hover:border-accent">
+                        <h3 class="text-2xl md:text-4xl font-bold tracking-tighter transition-colors group-hover:text-accent">TaskSync</h3>
+                        <p class="text-secondary hidden md:block">EOD & SOD. Done before you blink.</p>
+                        <svg class="w-8 h-8 transform transition-transform duration-300 group-hover:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+                </a>
+                <!-- Project 3 -->
+                <a href="https://github.com/Himanshu-Yadav-0/Ranger-Green" class="block group">
+                     <div class="flex justify-between items-center py-6 border-t border-b border-primary transition-all duration-300 group-hover:border-accent">
+                        <h3 class="text-2xl md:text-4xl font-bold tracking-tighter transition-colors group-hover:text-accent">Ranger Green</h3>
+                        <p class="text-secondary hidden md:block">Plants that talk. Data that listens.</p>
+                        <svg class="w-8 h-8 transform transition-transform duration-300 group-hover:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 text-center">
+             <div class="max-w-3xl mx-auto">
+                <div class="mb-8">
+                    <svg id="contact-eyes-svg" class="w-24 h-24 mx-auto" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="left-character-part">
+                            <path d="M42.3438 78.75C38.625 78.75 35.25 77.0625 32.8125 74.25C30.375 71.4375 29.25 67.875 29.25 63.75C29.25 59.625 30.375 56.0625 32.8125 53.25C35.25 50.4375 38.625 48.75 42.3438 48.75C46.0625 48.75 49.4375 50.4375 51.875 53.25C54.3125 56.0625 55.375 59.625 55.375 63.75C55.375 67.875 54.3125 71.4375 51.875 74.25C49.4375 77.0625 46.0625 78.75 42.3438 78.75Z" fill="var(--text-color)"/>
+                            <path d="M25.5 45L51 22.5" stroke="var(--text-color)" stroke-width="10" stroke-linecap="round"/>
+                        </g>
+                        <g id="right-character-part">
+                            <path d="M82.3438 71.25C78.625 71.25 75.25 69.5625 72.8125 66.75C70.375 63.9375 69.25 60.375 69.25 56.25C69.25 52.125 70.375 48.5625 72.8125 45.75C75.25 42.9375 78.625 41.25 82.3438 41.25C86.0625 41.25 89.4375 42.9375 91.875 45.75C94.3125 48.5625 95.375 52.125 95.375 56.25C95.375 60.375 94.3125 63.9375 91.875 66.75C89.4375 69.5625 86.0625 71.25 82.3438 71.25Z" fill="var(--text-color)"/>
+                            <path d="M72 37.5L90 22.5" stroke="var(--text-color)" stroke-width="10" stroke-linecap="round"/>
+                        </g>
+                    </svg>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-4">ALWAYS ON THE LOOKOUT</h2>
+                <p class="text-lg text-secondary mb-8">
+                    I'm open to new projects and collaborations. Let's build something amazing together.
+                </p>
+                <a href="mailto:himanshuyadav.it26@gmail.com" class="inline-block bg-accent text-white font-bold text-lg px-10 py-4 rounded-md hover:opacity-90 transition-opacity">
+                    GET IN TOUCH
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary">
+        <div class="container mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center text-secondary space-y-4 sm:space-y-0">
+            <p class="text-sm">&copy; 2025 Himanshu Yadav. All Rights Reserved.</p>
+            <div class="flex space-x-4">
+                <a href="https://x.com/Hiimanshu_Yadav" class="hover-accent">Twitter</a>
+                <a href="https://github.com/Himanshu-Yadav-0" class="hover-accent">GitHub</a>
+                <a href="https://www.linkedin.com/in/hiimanshuyadav/" class="hover-accent">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- THEME TOGGLE SCRIPT ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                lightIcon.classList.add('hidden');
+                darkIcon.classList.remove('hidden');
+            }
+        }
+
+        if (document.documentElement.classList.contains('dark')) {
+            lightIcon.classList.remove('hidden');
+        } else {
+            darkIcon.classList.remove('hidden');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(!isDark);
+        });
+
+        // --- EYE FOLLOWING SCRIPT ---
+        document.addEventListener('mousemove', (e) => {
+            const leftPart = document.getElementById('left-character-part');
+            const rightPart = document.getElementById('right-character-part');
+            const svg = document.getElementById('contact-eyes-svg');
+
+            if (!svg) return;
+
+            const svgRect = svg.getBoundingClientRect();
+            const svgCenterX = svgRect.left + svgRect.width / 2;
+            const tiltDeltaX = e.clientX - svgCenterX;
+            const maxTilt = 10;
+            const tiltAngle = (tiltDeltaX / (window.innerWidth / 2)) * maxTilt;
+
+            const movePart = (part) => {
+                if (!part) return;
+                const partRect = part.getBoundingClientRect();
+                const partCenterX = partRect.left + partRect.width / 2;
+                const partCenterY = partRect.top + partRect.height / 2;
+                const deltaX = e.clientX - partCenterX;
+                const deltaY = e.clientY - partCenterY;
+                const angle = Math.atan2(deltaY, deltaX);
+                const maxMove = 8; 
+                const moveX = Math.cos(angle) * maxMove;
+                const moveY = Math.sin(angle) * maxMove;
+                
+                part.style.transform = `translate(${moveX}px, ${moveY}px) rotate(${tiltAngle}deg)`;
+                part.style.transition = 'transform 0.1s ease-out';
+            };
+            
+            movePart(leftPart);
+            movePart(rightPart);
+        });
+
+        // --- MOBILE MENU SCRIPT ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('opacity-0');
+            mobileMenu.classList.toggle('-translate-y-4');
+            mobileMenu.classList.toggle('pointer-events-none');
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+    </script>
+</body>
+</html>
+
